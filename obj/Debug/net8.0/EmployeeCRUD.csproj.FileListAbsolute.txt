@@ -38,3 +38,4 @@
 /Users/neharajbanshi/Documents/EmployeeCRUD/obj/Debug/net8.0/EmployeeCRUD.pdb
 /Users/neharajbanshi/Documents/EmployeeCRUD/obj/Debug/net8.0/EmployeeCRUD.genruntimeconfig.cache
 /Users/neharajbanshi/Documents/EmployeeCRUD/obj/Debug/net8.0/ref/EmployeeCRUD.dll
+/Users/neharajbanshi/Documents/EmployeeCRUD/obj/Debug/net8.0/EmployeeCRUD.sourcelink.json
