@@ -34,6 +34,18 @@ cmd.ExecuteNonQuery();
 
 Console.WriteLine("Data Inserted Successfully!");
 
+//updating data
+sql="UPDATE employee SET name='Jebidiah' WHERE eid=1";
+cmd=new MySqlCommand(sql,conn);
+cmd.ExecuteNonQuery();
+Console.WriteLine("Data Updated Successfully!");
+
+//updating data
+sql="DELETE FROM employee WHERE eid=1";
+cmd=new MySqlCommand(sql,conn);
+cmd.ExecuteNonQuery();
+Console.WriteLine("Data Deleted Successfully!");
+
             conn.Close();
         }
 
