@@ -12,7 +12,8 @@ namespace MyProject
 
         public Program()
         {
-            // Creating connection
+            try{
+                // Creating connection
             string constr = "SERVER=localhost; DATABASE=employee_db; UID=csharpuser; PASSWORD=mypassword; AllowPublicKeyRetrieval=True; SSL Mode=None;";
             conn = new MySqlConnection(constr);
             conn.Open();
@@ -35,18 +36,44 @@ cmd.ExecuteNonQuery();
 Console.WriteLine("Data Inserted Successfully!");
 
 //updating data
-sql="UPDATE employee SET name='Jebidiah' WHERE eid=1";
-cmd=new MySqlCommand(sql,conn);
-cmd.ExecuteNonQuery();
-Console.WriteLine("Data Updated Successfully!");
+//sql="UPDATE employee SET name='Jebidiah' WHERE eid=1";
+//cmd=new MySqlCommand(sql,conn);
+//cmd.ExecuteNonQuery();
+//Console.WriteLine("Data Updated Successfully!");
 
-//updating data
-sql="DELETE FROM employee WHERE eid=1";
-cmd=new MySqlCommand(sql,conn);
-cmd.ExecuteNonQuery();
-Console.WriteLine("Data Deleted Successfully!");
+//deleting data
+//sql="DELETE FROM employee WHERE eid=1";
+//cmd=new MySqlCommand(sql,conn);
+//cmd.ExecuteNonQuery();
+//Console.WriteLine("Data Deleted Successfully!");
 
-            conn.Close();
+//selecting data
+sql="SELECT * FROM employee";
+cmd=new MySqlCommand(sql,conn);
+MySqlDataAdapter adapter=new MySqlDataAdapter(cmd);
+DataTable dt=new DataTable();
+adapter.Fill(dt);
+
+
+if(dt.Rows.Count!=0){
+for(int i=0;i<dt.Rows.Count;i++){
+string sid= dt.Rows[i]["eid"].ToString();
+string name= dt.Rows[i]["name"].ToString();
+Console.WriteLine(sid+" "+name);
+}
+}
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally{
+                if(conn!=null && conn.State ==ConnectionState.Open){
+                    conn.Close();
+                    Console.WriteLine("Connection Closed Successfully!");
+                }
+            }
         }
 
         static void Main(string[] args)
